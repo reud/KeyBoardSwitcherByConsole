@@ -26,6 +26,7 @@ namespace KeyBoardSwitcherByConsole
         {
             if(this.USBHex.Equals(""))
             {
+                Console.WriteLine("You dont have to define this parameter");
                 throw new ArgumentNullException();
             }
             else
