@@ -1,0 +1,7 @@
+C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.exe.config
+C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.exe
+C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.pdb
+C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.csprojResolveAssemblyReference.cache
+C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.csproj.CoreCompileInputs.cache
+C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.exe
+C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.pdb
