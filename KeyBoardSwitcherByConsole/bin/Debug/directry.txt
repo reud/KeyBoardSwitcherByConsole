@@ -1,1 +1,3 @@
-C:\Users\reud\Dropbox\WorkSpace\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug/directry.txt
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\switcher\switcher.ino

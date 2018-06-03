@@ -5,3 +5,10 @@ C:\Users\reud\source\repos\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\o
 C:\Users\reud\source\repos\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.csproj.CoreCompileInputs.cache
 C:\Users\reud\source\repos\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.exe
 C:\Users\reud\source\repos\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.pdb
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.exe.config
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.exe
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.pdb
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.csprojResolveAssemblyReference.cache
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.csproj.CoreCompileInputs.cache
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.exe
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.pdb

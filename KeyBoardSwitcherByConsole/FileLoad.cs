@@ -7,41 +7,72 @@ using System.Threading.Tasks;
 
 namespace KeyBoardSwitcherByConsole
 {
-    class FileLoad
+    public class FileLoad
     {
 
         string stCurrentDir = System.IO.Directory.GetCurrentDirectory();
-        FileLoad()
+        public string commandFilePath { get; set; }
+        public string inoPath { get; set; }
+        public FileLoad()
         {
             Console.WriteLine(stCurrentDir+"にあるdirectry.txtファイルからディレクトリを読み込みます。");
             Console.WriteLine("ファイルが存在しない場合自動的に生成されます。");
             Console.WriteLine("生成後はプログラムを自動終了します。");
             TextLoad();
         }
+        string GetDir()
+        {
+            return stCurrentDir;
+        }
         void TextLoad()
         {
             try
             {
                 Console.WriteLine("ファイルを読み込みます・・・");
-                StreamReader streamreader = new StreamReader("directry.txt", Encoding.GetEncoding("Shift_JIS"));
+                StreamReader streamreader = new StreamReader(stCurrentDir+@"\directry.txt",Encoding.GetEncoding("Shift_JIS"));
+                stCurrentDir = streamreader.ReadLine();
+                Console.WriteLine(stCurrentDir);
+                commandFilePath = streamreader.ReadLine();
+                Console.WriteLine(commandFilePath);
+                inoPath = streamreader.ReadLine();
+                Console.WriteLine(inoPath);
+                streamreader.Close();
+                Console.Write("読み込み完了");
             }
             catch(Exception e)
             {
-                Console.WriteLine("ファイルの読み込みに失敗しました。");
+                
+                Console.WriteLine("ファイルの読み込みに失敗しました。"+e.Message);
                 MakeFile();
+                Environment.Exit(0);
             }
+
         }
         void MakeFile()
         {
-            using (System.IO.FileStream hStream = System.IO.File.Create("directry.txt"))
+            try
             {
-                // 作成時に返される FileStream を利用して閉じる
-                if (hStream != null)
+                using (System.IO.FileStream hStream = System.IO.File.Create("directry.txt"))
                 {
-                    hStream.Close();
+
+                    // 作成時に返される FileStream を利用して閉じる
+                    if (hStream != null)
+                    {
+                        hStream.Close();
+                    }
                 }
             }
-            Console.WriteLine("");
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            StreamWriter sw = new StreamWriter(stCurrentDir+"directry.txt",false, Encoding.GetEncoding("Shift_JIS"));
+            sw.WriteLine(stCurrentDir);
+            sw.WriteLine(stCurrentDir + @"\command.txt");
+            sw.WriteLine(stCurrentDir + @"\switcher.ino");
+            sw.Close();
+            Console.WriteLine("ファイルを作成しました。 場所:"+stCurrentDir);
+
         }
             
     }
