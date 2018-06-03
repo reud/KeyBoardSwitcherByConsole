@@ -110,9 +110,6 @@ namespace KeyBoardSwitcherByConsole
             new Define("-","KEY_-","0x2D"),
             new Define("=","KEY_=","0x2E"),
             new Define("+","KEY_+","0x2E"),
-
-
-
         };
 
     }
