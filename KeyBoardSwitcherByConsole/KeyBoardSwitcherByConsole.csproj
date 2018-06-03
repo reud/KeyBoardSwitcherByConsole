@@ -47,6 +47,8 @@
     <Compile Include="DefineBox.cs" />
     <Compile Include="Define.cs" />
     <Compile Include="FileLoad.cs" />
+    <Compile Include="KeyEvent.cs" />
+    <Compile Include="Procedure.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Writer.cs" />
