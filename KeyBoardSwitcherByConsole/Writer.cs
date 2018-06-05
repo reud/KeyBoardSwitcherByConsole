@@ -58,7 +58,7 @@ namespace KeyBoardSwitcherByConsole
             SenE("{}}");
             SenE("void loop{(}{)}{{}");
             SenE("if{(}digitalRead{(}Key1{)} == LOW && digitalRead{(}Key2{)} == LOW && digitalRead{(}Key3{)} == LOW {{}");
-            SenE("state = false;");
+            SenE("state = false;{}}");
             //ここから下に機能を書く
 
             //機能を書くのはここまで
@@ -68,6 +68,10 @@ namespace KeyBoardSwitcherByConsole
             SenE("DigiKeyboard.delay{(}10{)};");
             SenE("//2018.04.08 Firmware for Extension Keyboard powered by DigiSpark USB Development Board");
             SenE("//Written by Atsushi Kambayashi All Rights Reserved.");
+        }
+        void ButtonWrite(int key,KeyEvent keyEvent)
+        {
+
         }
         void SenE(string s)
         {

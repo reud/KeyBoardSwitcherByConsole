@@ -8,21 +8,21 @@ namespace KeyBoardSwitcherByConsole
 {
     public class Define
     {
-        public String UserSetAs { get; }//get-only プロパティ
-        public String IInputAs { get; }
-        public String USBHex { get; } = "";
-        public Define(String userSetAs,String iInputAs)
+        public string UserSetAs { get; }//get-only プロパティ
+        public string IInputAs { get; }
+        public string USBHex { get; } = "";
+        public Define(string userSetAs,string iInputAs)
         {
             this.UserSetAs = userSetAs;
             this.IInputAs = iInputAs;
         }
-        public Define(String userSetAs, String iInputAs,String USBHex)
+        public Define(string userSetAs, string iInputAs,string USBHex)
         {
             this.UserSetAs = userSetAs;
             this.IInputAs = iInputAs;
             this.USBHex = USBHex;
         }
-        public String OutputDefineLine()
+        public string OutputDefineLine()
         {
             if(this.USBHex.Equals(""))
             {

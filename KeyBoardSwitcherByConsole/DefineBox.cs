@@ -8,7 +8,7 @@ namespace KeyBoardSwitcherByConsole
 {
     class DefineBox
     {
-        List<Define> KeySwitch =new List<Define>
+        public List<Define> KeySwitch =new List<Define>
         {
             new Define("a","KEY_A"),
             new Define("b","KEY_B"),
