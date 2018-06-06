@@ -23,26 +23,57 @@ namespace KeyBoardSwitcherByConsole
         {
             var box = new DefineBox();
             var commands = new List<string>();
+            var tmp = new List<string>();
             for (int m=0;m<file.Capacity;++m)
             {
-                commands.AddRange(file[m].Split('+'));                
+                tmp.AddRange(file[m].Split('+'));
+                if(tmp.Capacity>1)
+                {
+                    for(int t=1;t<tmp.Capacity;++t)
+                    {
+                        tmp[t] = "+" + tmp[t];
+                    }
+                }
+                commands.AddRange(tmp);
+                tmp.Clear();
             }
+
             for(int s=0;s<commands.Capacity;++s)//重複要素を削除する。
             {
                 for(int r=(1+s);r<commands.Capacity;++r)
                 {
-                    if(commands)
+                    if(commands[r].Equals(commands[s]))
+                    {
+                        commands.RemoveAt(r);
+                    }
                 }
             }
-            
+            //ここからHexを持つワードを探す。
+            var ret = new List<string>();
+            for(int s=0;s<commands.Capacity;++s)
+            {
+                for(int i=0;i<box.KeySwitch.Capacity;++i)
+                {
+                    if(commands[s].Equals(box.KeySwitch[i]))
+                    {
+                        if(box.KeySwitch[i].CheckIsHaveUSBHex())
+                        {
+                            ret.Add("#define " + box.KeySwitch[i].IInputAs + " " + box.KeySwitch[i].USBHex);
+                        }
+                    }
+                }
+            }
+            return ret;
         }
         public string GetLine(int i)
         {
             Console.WriteLine("ReadLine:" + file[i]);
             if(file[i].IndexOf("/string/")!=(-1))//arudinoに打ち込む形式で出力する。
             {
+                
                 file[i].Replace("/string/", "");
-                return "DigiKeyboard.print(\""+file[i]+"\");";
+                Console.WriteLine("文字列:" + file[i]);
+                return "DigiKeyboard.print{(}\""+file[i]+"\"{)};";
             }
             else
             {
@@ -54,9 +85,11 @@ namespace KeyBoardSwitcherByConsole
 
                 if(list2.Capacity>1)//もしリストの要素が2以上すなわち同時押しがあるなら
                 {
-                    for(int s=0;s<(list2.Capacity-1);++s)//+の復元作業
+                    Console.WriteLine(list2.Capacity + "が重さ");
+                    for(int s=1;s<(list2.Capacity);++s)//+の復元作業
                     {
-                        list2[s + 1] = "+" + list2[s + 1];//
+                        Console.WriteLine("s=" + s.ToString() + ":" + list2[s]);
+                        list2[s] = "+" + list2[s];//
                     }
                 }
                 var ret = "";
@@ -94,7 +127,7 @@ namespace KeyBoardSwitcherByConsole
                 }
 
                 Console.WriteLine("読み込んだret=" + ret);
-                return "DigiKeyboard.sendKeyStroke(\"" + ret + "\");";
+                return "DigiKeyboard.sendKeyStroke{(}\"" + ret + "\"{)};";
             }
         }
     }

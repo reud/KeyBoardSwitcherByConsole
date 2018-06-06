@@ -1,0 +1,7 @@
+/key1/
+/string/afost
+/key2/
+a+LCtrl
+/key3/
+/string/nnnejde
+a+LCtrl

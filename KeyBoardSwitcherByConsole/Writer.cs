@@ -11,27 +11,34 @@ namespace KeyBoardSwitcherByConsole
     class Writer
     {
         string path;
-        public Writer(string path)
+        Procedure procedure;
+        public Writer(string path,Procedure cmdPath)
         {
             this.path = path;
             System.Diagnostics.Process.Start(path);
             Thread.Sleep(20000);
             //GetBlank();
             //HeloWorld();
-            Write();
+            this.procedure = cmdPath;
+            Write(cmdPath);
         }
         void GetBlank()
         {
-            
-            
+
+            Console.WriteLine("deleting");
             for (int i = 0; i < 100; ++i)
             {
                 SendKeys.SendWait("{DOWN}");
+            }
+            for (int i = 0; i < 10; ++i)
+            {
+                SendKeys.SendWait("{RIGHT}");
             }
             for (int i = 0; i < 3000; ++i)
             {
                 SendKeys.SendWait("{BS}");
             }
+            Console.WriteLine("deleted");
         }
         void HeloWorld()
         {
@@ -42,10 +49,10 @@ namespace KeyBoardSwitcherByConsole
             SenE("Serial.println{(}\"Hello, World\"{)};");
             //SenE("{}}");
         }
-        void Write()//実際はProcedure pを引数にとってほしい}
+        void Write(Procedure p)//実際はProcedure pを引数にとってほしい}
 
         {
-            SenE("#include <Digikeyboard.h>");
+            SenE("#include <DigiKeyboard.h>");
             SenE("");//この辺でDefineをしとく
             SenE("const int key1 = 1;");
             SenE("const int key2 = 0;");
@@ -57,10 +64,12 @@ namespace KeyBoardSwitcherByConsole
             SenE("pinMode{(}key3,INPUT{)};");
             SenE("{}}");
             SenE("void loop{(}{)}{{}");
-            SenE("if{(}digitalRead{(}Key1{)} == LOW && digitalRead{(}Key2{)} == LOW && digitalRead{(}Key3{)} == LOW {{}");
+            SenE("if{(}digitalRead{(}key1{)} == LOW && digitalRead{(}key2{)} == LOW && digitalRead{(}key3{)} == LOW{)}{{}");
             SenE("state = false;{}}");
             //ここから下に機能を書く
-
+            ButtonWrite(1, p.key1);
+            ButtonWrite(2, p.key2);
+            ButtonWrite(3, p.key3);
             //機能を書くのはここまで
             SenE("else {{}");
             SenE("state = true;");
@@ -68,10 +77,36 @@ namespace KeyBoardSwitcherByConsole
             SenE("DigiKeyboard.delay{(}10{)};");
             SenE("//2018.04.08 Firmware for Extension Keyboard powered by DigiSpark USB Development Board");
             SenE("//Written by Atsushi Kambayashi All Rights Reserved.");
+            SendKeys.SendWait("{DOWN}");
+            SendKeys.SendWait("{DOWN}");
+            SendKeys.SendWait("{DOWN}");
+            SendKeys.SendWait("{DOWN}");
+            SendKeys.SendWait("{DOWN}");
+            SendKeys.SendWait("{DOWN}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{BS}");
+            SendKeys.SendWait("{BS}");
+            SendKeys.SendWait("{BS}");
+
+
         }
         void ButtonWrite(int key,KeyEvent keyEvent)
         {
-
+            SenE("else if{(}digitalRead{{}key" + key.ToString() + "{)}==HIGH{)}{{}");
+            SenE("DigiKeyboard.delay{(}10{)};");
+            SenE("if{(}!state{)}{{}");
+            SenE("DigiKeyboard.update{(}{)};");
+            int s = keyEvent.GetSize();
+            for (int i=0;i<s;++i)
+            {
+                SenE(keyEvent.GetLine(i));
+                SenE("DigiKeyboard.delay{(}200{)};");
+            }
+            SenE("state=true;");
+            SenE("{}}");
+            SenE("{}}");
         }
         void SenE(string s)
         {

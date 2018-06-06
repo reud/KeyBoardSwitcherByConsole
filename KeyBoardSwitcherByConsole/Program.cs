@@ -13,8 +13,9 @@ namespace KeyBoardSwitcherByConsole
         static void Main(string[] args)
         {
             var fl = new FileLoad();
-            var w = new Writer(fl.inoPath);
-
+            var p = new Procedure(fl.commandFilePath);
+            var w = new Writer(fl.inoPath,p);
+            
 
         }
     }
