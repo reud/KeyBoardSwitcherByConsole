@@ -17,10 +17,10 @@ namespace KeyBoardSwitcherByConsole
             this.path = path;
             System.Diagnostics.Process.Start(path);
             Thread.Sleep(20000);
-            //GetBlank();
+            GetBlank();
             //HeloWorld();
             this.procedure = cmdPath;
-            Write(cmdPath);
+            Write();
         }
         void GetBlank()
         {
@@ -49,7 +49,7 @@ namespace KeyBoardSwitcherByConsole
             SenE("Serial.println{(}\"Hello, World\"{)};");
             //SenE("{}}");
         }
-        void Write(Procedure p)//実際はProcedure pを引数にとってほしい}
+        void Write()//実際はProcedure pを引数にとってほしい}
 
         {
             SenE("#include <DigiKeyboard.h>");
@@ -67,9 +67,9 @@ namespace KeyBoardSwitcherByConsole
             SenE("if{(}digitalRead{(}key1{)} == LOW && digitalRead{(}key2{)} == LOW && digitalRead{(}key3{)} == LOW{)}{{}");
             SenE("state = false;{}}");
             //ここから下に機能を書く
-            ButtonWrite(1, p.key1);
-            ButtonWrite(2, p.key2);
-            ButtonWrite(3, p.key3);
+            ButtonWrite(1, procedure.key1);
+            ButtonWrite(2, procedure.key2);
+            ButtonWrite(3, procedure.key3);
             //機能を書くのはここまで
             SenE("else {{}");
             SenE("state = true;");
@@ -86,15 +86,34 @@ namespace KeyBoardSwitcherByConsole
             SendKeys.SendWait("{RIGHT}");
             SendKeys.SendWait("{RIGHT}");
             SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
             SendKeys.SendWait("{BS}");
             SendKeys.SendWait("{BS}");
             SendKeys.SendWait("{BS}");
-
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{RIGHT}");
+            SendKeys.SendWait("{BS}");
+            SendKeys.SendWait("{BS}");
+            SendKeys.SendWait("{BS}");
 
         }
         void ButtonWrite(int key,KeyEvent keyEvent)
         {
-            SenE("else if{(}digitalRead{{}key" + key.ToString() + "{)}==HIGH{)}{{}");
+            Console.WriteLine("key" + key.ToString() + "について書き込みます。");
+            keyEvent.Show();
+            SenE("else if{(}digitalRead{(}key" + key.ToString() + "{)}==HIGH{)}{{}");
             SenE("DigiKeyboard.delay{(}10{)};");
             SenE("if{(}!state{)}{{}");
             SenE("DigiKeyboard.update{(}{)};");
@@ -107,6 +126,7 @@ namespace KeyBoardSwitcherByConsole
             SenE("state=true;");
             SenE("{}}");
             SenE("{}}");
+            Console.WriteLine("書き込みは終了しました。");
         }
         void SenE(string s)
         {

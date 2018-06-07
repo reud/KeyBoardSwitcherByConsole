@@ -10,14 +10,28 @@ namespace KeyBoardSwitcherByConsole
     class KeyEvent
     {
         List<string> file;
+        int commandsN=0;
+
         public KeyEvent(List<string> file)
         {
             this.file = file;
+            Console.WriteLine("インスタンスを作成しました。");
+            for(int i=0;i<file.Count;++i)
+            {
+                Console.WriteLine("要素" + i.ToString() + ":" + file[i]);
+            }
             //CheckNeedDefineLine
+        }
+        public void Show()
+        {
+            for (int i = 0; i < file.Count; ++i)
+            {
+                Console.WriteLine("Show関数です。要素" + i.ToString() + ":" + file[i]);
+            }
         }
         public int GetSize()
         {
-            return file.Capacity;
+            return file.Count;
         }
         public List<string> GetDefineLine()
         {
@@ -67,11 +81,16 @@ namespace KeyBoardSwitcherByConsole
         }
         public string GetLine(int i)
         {
+            Console.WriteLine("KeyEvents.GetLineでの現在のリスト:");
+            for (int s = 0; s< file.Count; ++s)
+            {
+                Console.WriteLine("要素" + i.ToString() + ":" + file[s]);
+            }
             Console.WriteLine("ReadLine:" + file[i]);
             if(file[i].IndexOf("/string/")!=(-1))//arudinoに打ち込む形式で出力する。
             {
                 
-                file[i].Replace("/string/", "");
+                file[i]=file[i].Replace("/string/", "");
                 Console.WriteLine("文字列:" + file[i]);
                 return "DigiKeyboard.print{(}\""+file[i]+"\"{)};";
             }
@@ -80,26 +99,33 @@ namespace KeyBoardSwitcherByConsole
                 var box = new DefineBox();
                 //同時入力を識別します。
                 string[] command = file[i].Split('+');//+で区切る
+                commandsN = command.Length;
+                Console.WriteLine("KeyEventのGetLineでの要素はこれらです");
+                for(i=0;i<command.Length;++i)
+                {
+                    Console.WriteLine(command[i]);
+                }
                 var list2 = new List<string>();
                 list2.AddRange(command);
 
-                if(list2.Capacity>1)//もしリストの要素が2以上すなわち同時押しがあるなら
+                if(command.Length > 1)//もしリストの要素が2以上すなわち同時押しがあるなら
                 {
-                    Console.WriteLine(list2.Capacity + "が重さ");
-                    for(int s=1;s<(list2.Capacity);++s)//+の復元作業
+                    Console.WriteLine(command.Length + "が重さ");
+                    for(int s=1;s<(command.Length);++s)//+の復元作業
                     {
-                        Console.WriteLine("s=" + s.ToString() + ":" + list2[s]);
+                        Console.WriteLine("s:"+s.ToString()+"s=" + s.ToString() + ":" + list2[s]);
                         list2[s] = "+" + list2[s];//
                     }
                 }
                 var ret = "";
                 var words = 0;
-                for(int s=0;s<box.KeySwitch.Capacity;++s)//出力する文字列をここから作成
+                for(int s=0;s< box.KeySwitch.Count; ++s)//出力する文字列をここから作成
                 {
-                    for (int t = 0; t < list2.Capacity; ++t)
+                    for (int t = 0; t <command.Length ; ++t)
                     {
                         if (list2[t].Equals(box.KeySwitch[s].UserSetAs))
                         {
+                            Console.WriteLine("正当なWordでした！");
                             if (words == 0)
                             {
                                 ++words;

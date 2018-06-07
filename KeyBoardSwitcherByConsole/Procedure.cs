@@ -38,30 +38,33 @@ namespace KeyBoardSwitcherByConsole
                 var pressArg = new List<string>();
                 while(!(keyList[a].Equals("/key2/")))
                 {
-                    Console.WriteLine("key1=" + keyList[a]);
+                    Console.WriteLine("現在のListは:"+pressArg);
+                    Console.WriteLine("key1=" + keyList[a] + "a=" + a.ToString());
                     pressArg.Add(keyList[a]);
                     ++a;
                 }
                 key1 = new KeyEvent(pressArg);
-                pressArg.Clear();
                 ++a;
+                var pressArg2 = new List<string>();
+
                 while (!(keyList[a].Equals("/key3/")))
                 {
-                    pressArg.Add(keyList[a]);
-                    Console.WriteLine("key2=" + keyList[a]);
+                    pressArg2.Add(keyList[a]);
+                    Console.WriteLine("key2=" + keyList[a]+"a="+a.ToString());
                     ++a;
                 }
-                key2 = new KeyEvent(pressArg);
-                pressArg.Clear();
+                key2 = new KeyEvent(pressArg2);
                 ++a;
                 var switcher = true;
-                while(switcher)
+                var pressArg3 = new List<string>();
+
+                while (switcher)
                 {
                     
                     try
                     {
-                        pressArg.Add(keyList[a]);
-                        Console.WriteLine("key3="+keyList[a]);
+                        pressArg3.Add(keyList[a]);
+                        Console.WriteLine("key3="+keyList[a] + "a=" + a.ToString());
                     }
                     catch
                     {
@@ -69,7 +72,12 @@ namespace KeyBoardSwitcherByConsole
                     }
                     ++a;
                 }
-                key3 = new KeyEvent(pressArg);
+                key3 = new KeyEvent(pressArg3);
+                Console.WriteLine("作成したKeyEventsについて確認します。");
+                key1.Show();
+                key2.Show();
+                key3.Show();
+
             }
         }
     }
