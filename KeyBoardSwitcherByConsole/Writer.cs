@@ -77,7 +77,7 @@ namespace KeyBoardSwitcherByConsole
             SenE("DigiKeyboard.delay{(}10{)};");
             SenE("//2018.04.08 Firmware for Extension Keyboard powered by DigiSpark USB Development Board");
             SenE("//Written by Atsushi Kambayashi All Rights Reserved.");
-            SendKeys.SendWait("{DOWN}");
+            SendKeys.SendWait("{DOWN}");//最後の / を消すための処理
             SendKeys.SendWait("{DOWN}");
             SendKeys.SendWait("{DOWN}");
             SendKeys.SendWait("{DOWN}");

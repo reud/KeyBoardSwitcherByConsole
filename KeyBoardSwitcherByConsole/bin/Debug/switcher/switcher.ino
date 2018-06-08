@@ -16,7 +16,7 @@ void loop(){
       DigiKeyboard.delay(10);
       if(!state){
         DigiKeyboard.update();
-        DigiKeyboard.sendKeyStroke(KEY_ESCAPE,MOD_CONTROL_LEFT|MOD_SHIFT_LEFT);
+        DigiKeyboard.sendKeyStroke(KEY_H,MOD_CONTROL_LEFT | MOD_ALT_LEFT);
         DigiKeyboard.delay(200);
         state=true;
       }
