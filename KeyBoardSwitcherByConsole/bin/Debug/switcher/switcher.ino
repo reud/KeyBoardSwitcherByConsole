@@ -1,5 +1,5 @@
 #include <DigiKeyboard.h>
-
+#define KEY_ESCAPE 0x29
 const int key1 = 1;
 const int key2 = 0;
 const int key3 = 2;
@@ -16,17 +16,7 @@ void loop(){
       DigiKeyboard.delay(10);
       if(!state){
         DigiKeyboard.update();
-        DigiKeyboard.print("apple");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.print("boy");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.sendKeyStroke("KEY_C");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.sendKeyStroke("KEY_C,MOD_SHIFT_LEFT");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.sendKeyStroke("KEY_D,MOD_CONTROL_LEFT");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.sendKeyStroke("KEY_D,MOD_SHIFT_LEFT");
+        DigiKeyboard.sendKeyStroke(KEY_ESCAPE,MOD_CONTROL_LEFT|MOD_SHIFT_LEFT);
         DigiKeyboard.delay(200);
         state=true;
       }
@@ -35,13 +25,7 @@ void loop(){
       DigiKeyboard.delay(10);
       if(!state){
         DigiKeyboard.update();
-        DigiKeyboard.print("ECHO");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.print("Fruits");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.print("Gold");
-        DigiKeyboard.delay(200);
-        DigiKeyboard.sendKeyStroke("MOD_SHIFT_LEFT,KEY_H,MOD_SHIFT_LEFT");
+        DigiKeyboard.sendKeyStroke(KEY_U,MOD_CONTROL_LEFT | MOD_ALT_LEFT);
         DigiKeyboard.delay(200);
         state=true;
       }
@@ -50,7 +34,7 @@ void loop(){
       DigiKeyboard.delay(10);
       if(!state){
         DigiKeyboard.update();
-        DigiKeyboard.print("Ice");
+        DigiKeyboard.sendKeyStroke(KEY_W,MOD_CONTROL_LEFT | MOD_ALT_LEFT);
         DigiKeyboard.delay(200);
         state=true;
       }
