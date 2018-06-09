@@ -17,7 +17,7 @@ namespace KeyBoardSwitcherByConsole
             this.path = path;
             System.Diagnostics.Process.Start(path);
             Thread.Sleep(20000);
-            GetBlank();
+            //GetBlank();
             //HeloWorld();
             this.procedure = cmdPath;
             Write();
@@ -52,7 +52,9 @@ namespace KeyBoardSwitcherByConsole
         void Write()//実際はProcedure pを引数にとってほしい}
 
         {
+            
             SenE("#include <DigiKeyboard.h>");
+            DefineWrite(procedure.key1, procedure.key2, procedure.key3);
             SenE("");//この辺でDefineをしとく
             SenE("const int key1 = 1;");
             SenE("const int key2 = 0;");
@@ -127,6 +129,34 @@ namespace KeyBoardSwitcherByConsole
             SenE("{}}");
             SenE("{}}");
             Console.WriteLine("書き込みは終了しました。");
+        }
+        void DefineWrite(KeyEvent key1,KeyEvent key2,KeyEvent key3)
+        {
+            var defines = new List<String>();
+            defines.AddRange(key1.GetDefineLine());
+            defines.AddRange(key2.GetDefineLine());
+            defines.AddRange(key3.GetDefineLine());
+            Console.WriteLine("DefineLine:" + defines.Count.ToString());
+            for(int i=0;i<defines.Count;++i)
+            {
+                Console.WriteLine("読み込んだDefineLine:" + defines[i]);
+
+            }
+
+            for (int s = 0; s < defines.Count; ++s)//重複要素を削除する。
+            {
+                for (int r = (1 + s); r < defines.Count; ++r)
+                {
+                    if (defines[r].Equals(defines[s]))
+                    {
+                        defines.RemoveAt(r);
+                    }
+                }
+            }
+            for(int i=0;i<defines.Count;++i)
+            {
+                SenE(defines[i]);
+            }
         }
         void SenE(string s)
         {

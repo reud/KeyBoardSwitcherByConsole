@@ -38,41 +38,33 @@ namespace KeyBoardSwitcherByConsole
             var box = new DefineBox();
             var commands = new List<string>();
             var tmp = new List<string>();
-            for (int m=0;m<file.Capacity;++m)
+            for (int m=0;m< file.Count; ++m)
             {
                 tmp.AddRange(file[m].Split('+'));
                 if(tmp.Capacity>1)
                 {
-                    for(int t=1;t<tmp.Capacity;++t)
+                    for(int t=1;t<tmp.Count;++t)
                     {
                         tmp[t] = "+" + tmp[t];
                     }
                 }
                 commands.AddRange(tmp);
-                tmp.Clear();
-            }
-
-            for(int s=0;s<commands.Capacity;++s)//重複要素を削除する。
-            {
-                for(int r=(1+s);r<commands.Capacity;++r)
-                {
-                    if(commands[r].Equals(commands[s]))
-                    {
-                        commands.RemoveAt(r);
-                    }
-                }
+                Console.WriteLine("For DefineCode Comands:" + commands.Count);
             }
             //ここからHexを持つワードを探す。
             var ret = new List<string>();
-            for(int s=0;s<commands.Capacity;++s)
+            for(int s=0;s<commands.Count;++s)
             {
-                for(int i=0;i<box.KeySwitch.Capacity;++i)
+                for(int i=0;i<box.KeySwitch.Count;++i)
                 {
-                    if(commands[s].Equals(box.KeySwitch[i]))
+                    //Console.WriteLine("一致するコマンドを検索中:" + box.KeySwitch[i] + " and " + commands[s]);
+
+                    if (commands[s].Equals(box.KeySwitch[i].UserSetAs))
                     {
                         if(box.KeySwitch[i].CheckIsHaveUSBHex())
                         {
                             ret.Add("#define " + box.KeySwitch[i].IInputAs + " " + box.KeySwitch[i].USBHex);
+                            Console.WriteLine("Defineされる要素:" + box.KeySwitch[i].IInputAs);
                         }
                     }
                 }
@@ -119,13 +111,13 @@ namespace KeyBoardSwitcherByConsole
                 }
                 var ret = "";
                 var words = 0;
-                for(int s=0;s< box.KeySwitch.Count; ++s)//出力する文字列をここから作成
+                for(int t = 0; t < command.Length; ++t)//出力する文字列をここから作成
                 {
-                    for (int t = 0; t <command.Length ; ++t)
+                    for (int s = 0; s < box.KeySwitch.Count; ++s)
                     {
-                        if (list2[t].Equals(box.KeySwitch[s].UserSetAs))
+                        if (list2[t].Equals(box.KeySwitch[s].UserSetAs)) 
                         {
-                            Console.WriteLine("正当なWordでした！");
+                            Console.WriteLine("正当なWordでした！"+list2[t]);
                             if (words == 0)
                             {
                                 ++words;
@@ -153,7 +145,7 @@ namespace KeyBoardSwitcherByConsole
                 }
 
                 Console.WriteLine("読み込んだret=" + ret);
-                return "DigiKeyboard.sendKeyStroke{(}\"" + ret + "\"{)};";
+                return "DigiKeyboard.sendKeyStroke{(}" + ret + "{)};";
             }
         }
     }
