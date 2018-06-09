@@ -17,7 +17,7 @@ namespace KeyBoardSwitcherByConsole
             this.path = path;
             System.Diagnostics.Process.Start(path);
             Thread.Sleep(20000);
-            //GetBlank();
+            GetBlank();
             //HeloWorld();
             this.procedure = cmdPath;
             Write();
