@@ -12,3 +12,7 @@ C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConso
 C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.csproj.CoreCompileInputs.cache
 C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.exe
 C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.pdb
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.exe.manifest
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\bin\Debug\KeyBoardSwitcherByConsole.application
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.exe.manifest
+C:\Users\reud\Documents\GitHub\KeyBoardSwitcherByConsole\KeyBoardSwitcherByConsole\obj\Debug\KeyBoardSwitcherByConsole.application
